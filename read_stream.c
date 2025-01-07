@@ -1,4 +1,4 @@
-#include "simple_shell.c"
+#include "simple_shell.h"
 
 /**
  * read_stream - read a line from the stream
