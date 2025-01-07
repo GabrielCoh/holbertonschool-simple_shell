@@ -8,20 +8,43 @@
 
 char *find_executable(char *command)
 {
-	char **environ;
-	char *path = environ("PATH");
-	char *dir = strtok(path, ":");
-	char *full_path = malloc(1024);
+	extern char **environ;
+	char *path_env = NULL;
+	char *path_copy, *dir, *full_path;
+	int x = 0, len;
 
+	while (environ[x] != NULL && path_env == NULL)
+	{
+		if (strncmp(environ[x], "PATH=", 5) == 0)
+		{
+			path_env = environ[x] + 5;
+		}
+		x++;
+	}
+	path_copy = strdup(path_env);
+	if (path_copy == NULL || command == NULL)
+		return (NULL);
+	dir = strtok(path_copy, ":");
 	while (dir != NULL)
 	{
-		sprintf(full_path, 1024, "%s%s", dir, command);
+		len = strlen(dir) + strlen(command) + 2;
+		full_path = malloc(len);
+		if (full_path == NULL)
+		{
+			free(path_copy);
+			return (NULL);
+		}
+		strcpy(full_path, dir);
+		strcat(full_path, "/");
+		strcat(full_path, command);
 		if (access(full_path, X_OK) == 0)
 		{
+			free(path_copy);
 			return (full_path);
 		}
+		free(full_path);
 		dir = strtok(NULL, ":");
 	}
-	free(full_path);
+	free(path_copy);
 	return (NULL);
 }

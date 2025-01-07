@@ -11,10 +11,9 @@ void shell_no_interactive(void)
 	char **args;
 	int status = -1;
 
-	do
-	{
+	do {
 		line = read_stream();
-		args = splt_line(line);
+		args = split_line(line);
 		status = execute_args(args);
 
 		free(line);
@@ -24,6 +23,5 @@ void shell_no_interactive(void)
 		{
 			exit(status);
 		}
-	}
-	while (status == -1);
+	} while (status == -1);
 }

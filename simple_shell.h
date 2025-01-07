@@ -14,12 +14,18 @@ void shell_interactive(void);
 void shell_no_interactive(void);
 
 char *read_line(void);
-char **splt_line(char *line);
+char **split_line(char *line);
 int execute_args(char **args);
+int new_process(char **args);
 extern char **environ;
 char *find_executable(char *command);
 
 char *read_stream(void);
+
+typedef struct {
+	char*name;
+	int(*func)(char **);
+} builtin_t;
 
 int own_cd(char **args);
 int own_exit(char **args);
