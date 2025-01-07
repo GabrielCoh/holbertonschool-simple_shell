@@ -9,12 +9,12 @@
 int own_help(char **args)
 {
 	char *builtin_args[] = {
-		"cd"
+		"cd",
 		"env",
 		"help",
 		"exit"
 	};
-	long unsigned int i = 0;
+	size_t i = 0;
 	(void)(**args);
 
 	printf("\n---help simple_shell---\n");

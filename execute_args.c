@@ -10,12 +10,12 @@ int execute_args(char **args)
 {
 	size_t x;
 
-        builtin_t builtin_args[] = {
-                {"cd", &own_cd},
-                {"env", &own_env},
+	builtin_t builtin_args[] = {
+		{"cd", &own_cd},
+		{"env", &own_env},
 		{"help", &own_help},
 		{"exit", &own_exit}
-        };
+	};
 
 	if (args[0] == NULL)
 	{
