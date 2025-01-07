@@ -1,9 +1,5 @@
 #include "simple_shell.h"
 
-<<<<<<< HEAD
-=======
-
->>>>>>> main
 /**
  * execute_args - check if the command is a builtin or a process
  * @args: the command line
