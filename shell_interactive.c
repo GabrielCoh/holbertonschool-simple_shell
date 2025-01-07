@@ -15,7 +15,7 @@ void shell_interactive(void)
 		write(1, "$ ", 2);
 		fflush(stdout);
 		line = read_line();
-		args = split_line(line);
+		args = splt_line(line);
 		status = execute_args(args);
 		free(line);
 		free(args);

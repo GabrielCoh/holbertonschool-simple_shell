@@ -16,6 +16,8 @@ void shell_no_interactive(void);
 char *read_line(void);
 char **splt_line(char *line);
 int execute_args(char **args);
+extern char **environ;
+char *find_executable(char *command);
 
 char *read_stream(void);
 
