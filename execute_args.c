@@ -1,5 +1,9 @@
 #include "simple_shell.h"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 /**
  * execute_args - check if the command is a builtin or a process
  * @args: the command line
@@ -8,32 +12,25 @@
 
 int execute_args(char **args)
 {
-	char *builtin_func_list[] = {
-		"cd",
-		"env",
-		"help",
-		"exit"
-	};
+	size_t x;
 
-	int (*builtin_func[])(char **) = {
-		&own_cd,
-		&own_env,
-		&own_help,
-		&own_exit
-	};
-
-	unsigned long int x = 0;
+        builtin_t builtin_args[] = {
+                {"cd", &own_cd},
+                {"env", &own_env},
+		{"help", &own_help},
+		{"exit", &own_exit}
+        };
 
 	if (args[0] == NULL)
 	{
 		return (-1);
 	}
 
-	for (; x < sizeof(builtin_func_list) / sizeof(char *); x++)
+	for (x = 0; x < sizeof(builtin_args) / sizeof(builtin_t); x++)
 	{
-		if (strcmp(args[0], builtin_func_list[x]) == 0)
+		if (strcmp(args[0], builtin_args->name) == 0)
 		{
-			return ((builtin_func[x])(args));
+			return ((builtin_args[x]).func(args));
 		}
 	}
 	return (new_process(args));
