@@ -13,7 +13,7 @@ void shell_no_interactive(void)
 
 	do {
 		line = read_stream();
-		args = splt_line(line);
+		args = split_line(line);
 		status = execute_args(args);
 
 		free(line);

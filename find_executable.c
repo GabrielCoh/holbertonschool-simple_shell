@@ -15,7 +15,7 @@ char *find_executable(char *command)
 
 	while (dir != NULL)
 	{
-		printf(full_path, 1024, "%s%s", dir, command);
+		sprintf(full_path, 1024, "%s%s", dir, command);
 		if (access(full_path, X_OK) == 0)
 		{
 			return (full_path);
