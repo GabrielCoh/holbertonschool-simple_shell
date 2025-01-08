@@ -22,9 +22,16 @@ char *find_executable(char *command);
 
 char *read_stream(void);
 
-typedef struct {
-	char*name;
-	int(*func)(char **);
+/**
+ * struct builtin - Check the command and if it is a build-in or not
+ * @name: the command name
+ * @func: the checking function
+ */
+
+typedef struct builtin
+{
+	char *name;
+	int (*func)(char **);
 } builtin_t;
 
 int own_cd(char **args);
