@@ -36,8 +36,8 @@ To have access to the man page of our project, you need to execute the man_1_sim
 man ./man_1_simple_shell
 ```
 ## Flowchart
-
 ![FlowchartSimpleShell drawio](https://github.com/user-attachments/assets/f816859d-1cfe-4223-a2cd-dd3f051148c3)
+
 ## Authors
 
 Brenda Pollagba and Gabriel Cohen
