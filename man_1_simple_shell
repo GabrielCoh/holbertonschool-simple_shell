@@ -1,0 +1,24 @@
+.TH SIMPLE SHELL "09-01-2025" "1.0" "simple shell man page"
+
+.SH NAME
+simple shell - create a UNIX command interpreter.
+
+.SH SYNOPSIS
+simple shell
+[command]
+
+.SH DESCRIPTION
+simple_shell is a custom command-line interpreter that provides n user interface for UNIX-like operating systems, which executes commands from the standard input.
+
+.SH EXAMPLES
+./hsh
+[command] [argument(s)]
+
+$ ls -a
+
+.SH ARGUMENTS
+simple_shell
+command arguments will be typed after the main command followed by a space and a '$' symbol.
+
+.SH BUGS
+In case of bugs, please report them to the authors of this project.
