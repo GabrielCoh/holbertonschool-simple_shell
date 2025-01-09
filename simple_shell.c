@@ -36,13 +36,6 @@ void shell_interactive(void)
 		args = split_line(line);
 		status = execute_args(args);
 
-		if (status >= 0)
-		{
-			free(line);
-			free(args);
-			exit(status);
-		}
-
 		free(line);
 		free(args);
 
@@ -64,13 +57,6 @@ void shell_no_interactive(void)
 		line = read_stream();
 		args = split_line(line);
 		status = execute_args(args);
-
-		if (status >= 0)
-		{
-			free(line);
-			free(args);
-			exit(status);
-		}
 
 		free(line);
 		free(args);

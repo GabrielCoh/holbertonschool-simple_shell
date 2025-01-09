@@ -31,7 +31,8 @@ int new_process(char **args)
 	{
 		perror("error in new_process : forking");
 	}
-	else
+
+	if (pid < 0)
 	{
 		do {
 			waitpid(pid, &status, WUNTRACED);

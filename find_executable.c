@@ -8,7 +8,6 @@
 
 char *find_executable(char *command)
 {
-	extern char **environ;
 	char *path_env = NULL;
 	char *path_copy, *dir, *full_path;
 	int x = 0, len;

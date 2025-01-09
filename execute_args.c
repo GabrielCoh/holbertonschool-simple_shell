@@ -17,7 +17,7 @@ int execute_args(char **args)
 		"exit"
 	};
 
-	int (*builtin_func [])(char **) = {
+	int (*builtin_func[])(char **) = {
 		&own_cd,
 		&own_env,
 		&own_help,
