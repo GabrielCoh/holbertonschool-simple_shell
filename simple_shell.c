@@ -38,11 +38,9 @@ void shell_interactive(void)
 
 		if (status >= 0)
 		{
+			free(line);
+			free(args);
 			exit(status);
-		}
-		if (strcmp(line, "exit") == 0)
-		{
-			break;
 		}
 
 		free(line);
@@ -69,12 +67,11 @@ void shell_no_interactive(void)
 
 		if (status >= 0)
 		{
+			free(line);
+			free(args);
 			exit(status);
 		}
-		if (strcmp(line, "exit") == 0)
-		{
-			break;
-		}
+
 		free(line);
 		free(args);
 	} while (status == -1);
