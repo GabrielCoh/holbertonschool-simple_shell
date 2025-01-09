@@ -16,7 +16,7 @@ int new_process(char **args)
 	{
 		if (execvp(args[0], args) == -1)
 		{
-			perror("error in new_process: command not found");
+			perror("./hsh");
 			exit(EXIT_FAILURE);
 		}
 	}
