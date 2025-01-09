@@ -23,8 +23,7 @@ char **split_line(char *line)
 	{
 		if (token[0] == '#')
 		{
-			tokens[x] = NULL;
-			return (tokens);
+			break;
 		}
 		tokens[x] = token;
 		x++;
