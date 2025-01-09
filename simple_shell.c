@@ -17,3 +17,65 @@ int main(void)
 	}
 	return (0);
 }
+
+/**
+ * shell_interactive - Function that display the prompt,
+ * and interpret commands
+ */
+
+void shell_interactive(void)
+{
+	char *line = NULL;
+	char **args;
+	int status = -1;
+
+	do {
+		write(1, "$ ", 2);
+		fflush(stdout);
+		line = read_line();
+		args = split_line(line);
+		status = execute_args(args);
+
+		if (status >= 0)
+		{
+			exit(status);
+		}
+		if (strcmp(line, "exit") == 0)
+		{
+			break;
+		}
+
+		free(line);
+		free(args);
+
+	} while (status == -1);
+}
+
+/**
+ * shell_no_interactive - unix command line interpreter
+ * Return: void
+ */
+
+void shell_no_interactive(void)
+{
+	char *line;
+	char **args;
+	int status = -1;
+
+	do {
+		line = read_stream();
+		args = split_line(line);
+		status = execute_args(args);
+
+		if (status >= 0)
+		{
+			exit(status);
+		}
+		if (strcmp(line, "exit") == 0)
+		{
+			break;
+		}
+		free(line);
+		free(args);
+	} while (status == -1);
+}
