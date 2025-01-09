@@ -15,7 +15,7 @@ int main(void)
 	{
 		shell_no_interactive();
 	}
-	return (0);
+	return (-1);
 }
 
 /**
@@ -31,14 +31,16 @@ void shell_interactive(void)
 
 	do {
 		write(1, "$ ", 2);
-		fflush(stdout);
 		line = read_line();
 		args = split_line(line);
 		status = execute_args(args);
-
 		free(line);
 		free(args);
 
+		if (status >= 0)
+		{
+			exit(status);
+		}
 	} while (status == -1);
 }
 
@@ -57,8 +59,12 @@ void shell_no_interactive(void)
 		line = read_stream();
 		args = split_line(line);
 		status = execute_args(args);
-
 		free(line);
 		free(args);
+
+		if (status >= 0)
+		{
+			exit(status);
+		}
 	} while (status == -1);
 }

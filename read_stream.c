@@ -6,35 +6,43 @@
  */
 char *read_stream(void)
 {
-	int bufsize = 1024, i = 0, character;
-	char *line = malloc(sizeof(char) * bufsize);
+	int bufsize = 1024, i = 0, character, new_bufsize;
+	char *line = malloc(sizeof(char) * bufsize), *new_line;
 
 	if (line == NULL)
-	{
-		fprintf(stderr, "Allocation error in read_stream");
+	{	fprintf(stderr, "Allocation error in read_stream");
 		exit(EXIT_FAILURE); }
 	while (1)
-	{
-		character = getchar ();
+	{	character = read(STDIN_FILENO, &character, 1);
+		if (character == -1)
+		{	free(line);
+			exit(EXIT_FAILURE);
+		}
+		if (character == 0)
+		{       free(line);
+			exit(EXIT_SUCCESS);
+		}
 		if (character == EOF)
-		{
-			free(line);
+		{	free(line);
 			exit(EXIT_SUCCESS); }
 		else if (character == '\n')
-		{
-			line[i] = '\0';
-			return (line); }
-		else if (character != '\n' && character != EOF)
-		{
-			line[i] = character; }
+		{	line[i] = '\0';
+			printf("\n"); }
+		else
+		{	line[i] = character; }
 		i++;
 		if (i >= bufsize)
 		{
-			bufsize += bufsize;
-			if (line == NULL)
-			{
-				fprintf(stderr, "Reallocation error in read_stream");
+			new_bufsize = bufsize * 2;
+			new_line = malloc(new_bufsize * sizeof(char));
+			if (new_line == NULL)
+			{	fprintf(stderr, "allocation error in split_line: new_tokens");
+				free(line);
 				exit(EXIT_FAILURE); }
+			memcpy(new_line, line, bufsize * sizeof(char));
+			free(line);
+			line = new_line;
+			bufsize = new_bufsize;
 		}
 	}
 }

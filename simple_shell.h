@@ -18,7 +18,6 @@ char **split_line(char *line);
 int execute_args(char **args);
 int new_process(char **args);
 extern char **environ;
-char *find_executable(char *command);
 
 char *read_stream(void);
 

@@ -10,20 +10,13 @@ int new_process(char **args)
 {
 	pid_t pid;
 	int status;
-	char *path;
 
 	pid = fork();
 	if (pid == 0)
 	{
-		path = find_executable(args[0]);
-		if (path == NULL)
+		if (execvp(args[0], args) == -1)
 		{
 			perror("error in new_process: command not found");
-			exit(EXIT_FAILURE);
-		}
-		if (execve(path, args, environ) == -1)
-		{
-			perror("error in new_process : execve failed");
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -32,11 +25,11 @@ int new_process(char **args)
 		perror("error in new_process : forking");
 	}
 
-	if (pid < 0)
+	else
 	{
 		do {
 			waitpid(pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
-	return (0);
+	return (-1);
 }

@@ -9,9 +9,11 @@
 char **split_line(char *line)
 {
 	int bufsize = 64;
+	int new_bufsize;
 	int x = 0;
 	char *token;
 	char **tokens = malloc(bufsize * sizeof(char *));
+	char **new_tokens;
 
 	if (tokens == NULL)
 	{
@@ -29,13 +31,18 @@ char **split_line(char *line)
 		x++;
 		if (x >= bufsize)
 		{
-			bufsize += bufsize;
-			tokens = realloc(tokens, bufsize * sizeof(char *));
-			if (token == NULL)
+			new_bufsize = bufsize * 2;
+			new_tokens = malloc(new_bufsize * sizeof(char *));
+			if (new_tokens == NULL)
 			{
-				fprintf(stderr, "reallocation error in split_line: tokens");
+				fprintf(stderr, "allocation error in split_line: new_tokens");
+				free(tokens);
 				exit(EXIT_FAILURE);
 			}
+			memcpy(new_tokens, tokens, bufsize * sizeof(char *));
+			free(tokens);
+			tokens = new_tokens;
+			bufsize = new_bufsize;
 		}
 		token = strtok(NULL, TOK_DELIM);
 	}
