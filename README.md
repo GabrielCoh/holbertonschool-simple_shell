@@ -37,7 +37,7 @@ man ./man_1_simple_shell
 ```
 ## Flowchart
 
-![Mon image](https://imgur.com/a/XxFFsww)
+![Flowchart](https://imgur.com/a/yKGO6cd)
 ## Authors
 
 Brenda Pollagba and Gabriel Cohen
