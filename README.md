@@ -37,7 +37,7 @@ man ./man_1_simple_shell
 ```
 ## Flowchart
 
-![Flowchart](https://imgur.com/a/yKGO6cd.png)
+![FlowchartSimpleShell drawio](https://github.com/user-attachments/assets/f816859d-1cfe-4223-a2cd-dd3f051148c3)
 ## Authors
 
 Brenda Pollagba and Gabriel Cohen
