@@ -8,13 +8,10 @@ simple shell
 followed by a command
 
 .SH DESCRIPTION
-simple_shell is a custom command-line interpreter that provides n user interface for UNIX-like operating systems, which executes commands from the standard input.
+simple_shell is a custom command-line interpreter that provides n user interface for UNIX-like operating systems, which executes commands from the standard input. This works in both interactive and non-interactive modes: either by typing an entire command or by executing a file that includes one or more commands.
 
 .SH EXAMPLES
-./hsh
-[command] [argument(s)]
-
-[output]
+Example of interactive mode:
 
 
 $ ls -l
@@ -27,8 +24,14 @@ $ ls -l
 
 -rw-r--r-- 1 root root  1021 Jan 10 09:34 split_line.c
 
-
 $
+
+Example of non interactive mode:
+
+$ cat test_ls | ./hsh
+
+read_stream.c		simple_shell.c		simple_shell.h		split_line.c
+
 
 .SH ARGUMENTS
 simple_shell
@@ -37,8 +40,11 @@ command arguments will be typed after the main command followed by a space and a
 .SH RETURN VALUE
 On success the shell returns the result of the command typed into it. If there is an error it will return an error message or will exit itself.
 
-.SH BUGS
-In case of bugs, please report them to the authors of this project.
+.SH ERRORS
+In case of errors, please report them to the authors of this project.
+
+.SH SEE ALSO
+exit(3), cd(1), ls(1)
 
 .SH AUTHORS
 Brenda Pollagba, Gabriel Cohen
