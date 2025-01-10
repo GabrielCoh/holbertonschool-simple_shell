@@ -12,17 +12,6 @@ These are some of the general requirements for our Simple Shell project:
 -We should only use system calls when we need to
 
 -Our shell should not have any memory leaks
-## Requirements
-
-These are some of the general requirements for our Simple Shell project:
-
--The allowed editors for this project are vi, vim and emacs
-
--Our code should use the Betty style
-
--We should only use system calls when we need to
-
--Our shell should not have any memory leaks
 ## Compilation
 
 To compile our project it is needed to have all the files included in our project, then use:
