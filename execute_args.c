@@ -13,14 +13,12 @@ int execute_args(char **args)
 	char (*builtin_func_list[]) = {
 		"cd",
 		"env",
-		"help",
 		"exit"
 	};
 
 	int (*builtin_func[])(char **) = {
 		&own_cd,
 		&own_env,
-		&own_help,
 		&own_exit
 	};
 

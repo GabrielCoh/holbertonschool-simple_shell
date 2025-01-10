@@ -34,13 +34,15 @@ void shell_interactive(void)
 		line = read_line();
 		args = split_line(line);
 		status = execute_args(args);
-		free(line);
-		free(args);
 
 		if (status >= 0)
 		{
+			free(line);
+			free(args);
 			exit(status);
 		}
+		free(line);
+		free(args);
 	} while (status == -1);
 }
 
@@ -59,12 +61,14 @@ void shell_no_interactive(void)
 		line = read_stream();
 		args = split_line(line);
 		status = execute_args(args);
-		free(line);
-		free(args);
 
 		if (status >= 0)
 		{
+			free(line);
+			free(args);
 			exit(status);
 		}
+		free(line);
+		free(args);
 	} while (status == -1);
 }
