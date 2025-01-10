@@ -14,7 +14,21 @@ simple_shell is a custom command-line interpreter that provides n user interface
 ./hsh
 [command] [argument(s)]
 
-$ ls -a
+[output]
+
+
+$ ls -l
+
+-rw-r--r-- 1 root root  1086 Jan 10 09:34 read_stream.c
+
+-rw-r--r-- 1 root root   980 Jan 10 09:34 simple_shell.c
+
+-rw-r--r-- 1 root root   533 Jan 10 09:34 simple_shell.h
+
+-rw-r--r-- 1 root root  1021 Jan 10 09:34 split_line.c
+
+
+$
 
 .SH ARGUMENTS
 simple_shell
