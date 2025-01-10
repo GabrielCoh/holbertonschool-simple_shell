@@ -29,6 +29,6 @@ man ./man_1_simple_shell
 
 ## Authors ✍️
 
-Brenda Pollagba and Gabriel Cohen
+Brenda Pollagba & Gabriel Cohen
 
 C#25 at Holberton School
