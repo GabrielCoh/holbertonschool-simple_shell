@@ -28,7 +28,7 @@ $
 
 Example of non interactive mode:
 
-$ cat test_ls | ./hsh
+root@user:$ cat test_ls | ./hsh
 
 read_stream.c		simple_shell.c		simple_shell.h		split_line.c
 
