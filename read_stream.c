@@ -6,30 +6,29 @@
  */
 char *read_stream(void)
 {
-	int bufsize = 1024, i = 0, character, new_bufsize;
-	char *line = malloc(sizeof(char) * bufsize), *new_line;
+	int bufsize = 1024, i = 0, read_char, new_bufsize;
+	char *line = malloc(sizeof(char) * bufsize), *new_line, character;
 
 	if (line == NULL)
 	{	fprintf(stderr, "Allocation error in read_stream");
 		exit(EXIT_FAILURE); }
 	while (1)
-	{	character = read(STDIN_FILENO, &character, 1);
-		if (character == -1)
+	{	read_char = read(STDIN_FILENO, &character, 1);
+		if (read_char == -1)
 		{	free(line);
 			exit(EXIT_FAILURE);
 		}
-		if (character == 0)
+		if (read_char == 0)
 		{       free(line);
 			exit(EXIT_SUCCESS);
 		}
-		if (character == EOF)
+		if (read_char == EOF)
 		{	free(line);
 			exit(EXIT_SUCCESS); }
 		else if (character == '\n')
 		{	line[i] = '\0';
-			printf("\n"); }
-		else
-		{	line[i] = character; }
+			return (line); }
+		line[i] = character;
 		i++;
 		if (i >= bufsize)
 		{
